@@ -22,6 +22,7 @@ public class EcxeptionHandler {
     @ExceptionHandler(BadRequestException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ErrorsDTO handleBadRequest(BadRequestException ex ){
+//        controllo necessario se vogliamo stampare gli errori presenti nell nostri DTO e farli tornare in sottoforma di lista
         if(ex.getErrorList() != null){
             String message = ex.getErrorList().stream().map(objectError -> objectError.getDefaultMessage()).collect(Collectors.joining());
             return new ErrorsDTO(message, LocalDateTime.now());

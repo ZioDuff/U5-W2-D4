@@ -7,13 +7,17 @@ import JacopoDeMaio.ValidationAndUpload.entities.BlogPost;
 import JacopoDeMaio.ValidationAndUpload.exceptions.NotFoundException;
 import JacopoDeMaio.ValidationAndUpload.payloads.BlogPostDTO;
 import JacopoDeMaio.ValidationAndUpload.repository.BlogPostRepository;
+import com.cloudinary.Cloudinary;
+import com.cloudinary.utils.ObjectUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.UUID;
 
 
@@ -25,6 +29,9 @@ public class BlogPostService {
 
     @Autowired
     private AutoreService autoreService;
+
+    @Autowired
+    private Cloudinary cloudinaryUploader;
 
 
 
@@ -68,6 +75,14 @@ public class BlogPostService {
     public void findByIdAndDelete(UUID blogPostId){
        BlogPost found = blogPostRepository.findById(blogPostId).orElseThrow(()-> new NotFoundException(blogPostId));
        blogPostRepository.delete(found);
+
+    }
+
+    public BlogPost uploadImage(UUID blogPostId, MultipartFile file) throws  IOException {
+        BlogPost found = this.findById(blogPostId);
+        String coverURL = (String) cloudinaryUploader.uploader().upload(file.getBytes(), ObjectUtils.emptyMap()).get("url");
+        found.setCover(coverURL);
+        return blogPostRepository.save(found);
 
     }
 }

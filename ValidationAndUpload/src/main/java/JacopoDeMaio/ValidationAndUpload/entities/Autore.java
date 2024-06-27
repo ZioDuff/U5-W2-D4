@@ -33,11 +33,11 @@ public class Autore {
     private String avatar;
 
 
-    public Autore(String nome, String cognome, String email, LocalDate dataDiNascita, String avatar) {
+    public Autore(String nome, String cognome, String email, LocalDate dataDiNascita) {
         this.nome = nome;
         this.cognome = cognome;
         this.email = email;
         this.dataDiNascita = dataDiNascita;
-        this.avatar = avatar;
+
     }
 }

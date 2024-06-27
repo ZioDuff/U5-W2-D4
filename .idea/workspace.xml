@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="333ed29b-4601-4914-ab5c-d18654c65262" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/ValidationAndUpload/src/main/java/JacopoDeMaio/ValidationAndUpload/config/serverConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ValidationAndUpload/src/main/java/JacopoDeMaio/ValidationAndUpload/controller/AutoreController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ValidationAndUpload/src/main/java/JacopoDeMaio/ValidationAndUpload/controller/AutoreController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ValidationAndUpload/src/main/java/JacopoDeMaio/ValidationAndUpload/entities/Autore.java" beforeDir="false" afterPath="$PROJECT_DIR$/ValidationAndUpload/src/main/java/JacopoDeMaio/ValidationAndUpload/entities/Autore.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ValidationAndUpload/src/main/java/JacopoDeMaio/ValidationAndUpload/payloads/AutoreDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/ValidationAndUpload/src/main/java/JacopoDeMaio/ValidationAndUpload/payloads/AutoreDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ValidationAndUpload/src/main/java/JacopoDeMaio/ValidationAndUpload/services/AutoreService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ValidationAndUpload/src/main/java/JacopoDeMaio/ValidationAndUpload/services/AutoreService.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 4
+}]]></component>
+  <component name="ProjectId" id="2iTVVpRE0gv8tg1o3CLcvKfJqfp" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/LENOVO/Desktop/U5-W2-D4",
+    "rearrange.code.on.save": "true",
+    "settings.editor.selected.configurable": "configurable.group.tools"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\LENOVO\Desktop\U5-W2-D4\ValidationAndUpload" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="333ed29b-4601-4914-ab5c-d18654c65262" name="Changes" comment="" />
+      <created>1719514581119</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1719514581119</updated>
+    </task>
+    <servers />
+  </component>
+</project>

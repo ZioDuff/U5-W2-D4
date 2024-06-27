@@ -13,7 +13,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.UUID;
 
 @RestController
@@ -56,4 +58,15 @@ public class BlogPostController {
     public void findBlogPostByIdAndDelete(@PathVariable UUID blogPostId){
         blogPostService.findByIdAndDelete(blogPostId);
     }
+
+//    qui ho fatto la PATCH in modo che mi chieda solamente questo per la modifica essendo diverso dal formato JSON
+    @PatchMapping("/{blogPostId}/avatar")
+    public BlogPost findBlogPostAndUpdateCover(@PathVariable UUID blogPostId, @RequestParam("avatar")MultipartFile file) throws IOException {
+
+        return blogPostService.uploadImage(blogPostId,file);
+
+
+
+    }
+
 }
