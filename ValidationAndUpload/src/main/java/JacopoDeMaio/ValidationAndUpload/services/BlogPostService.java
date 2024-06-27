@@ -4,8 +4,8 @@ package JacopoDeMaio.ValidationAndUpload.services;
 
 import JacopoDeMaio.ValidationAndUpload.entities.Autore;
 import JacopoDeMaio.ValidationAndUpload.entities.BlogPost;
-import JacopoDeMaio.ValidationAndUpload.entities.BlogPostPayload;
 import JacopoDeMaio.ValidationAndUpload.exceptions.NotFoundException;
+import JacopoDeMaio.ValidationAndUpload.payloads.BlogPostDTO;
 import JacopoDeMaio.ValidationAndUpload.repository.BlogPostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -38,11 +38,13 @@ public class BlogPostService {
     }
 //
 ////    metodo per creare un nuovo blog post
-    public BlogPost saveBlogPost(BlogPostPayload body){
+    public BlogPost saveBlogPost(BlogPostDTO body){
 
-        Autore autore = autoreService.findAutoreById(body.getAutoreId());
+        Autore autore = autoreService.findAutoreById(body.autoreId());
 
-        BlogPost newBlogPost= new BlogPost(body.getCategoria(), body.getTitolo(), body.getCover(), body.getContenuto(), body.getTempoDiLettura(),autore);
+        BlogPost newBlogPost= new BlogPost(body.categoria(), body.titolo(),  body.contenuto(), body.tempoDiLettura(),autore);
+
+        newBlogPost.setCover("https://ui-avatars.com/api/?name="+ body.titolo()+"&autoreId="+body.autoreId());
 
 
         return   blogPostRepository.save(newBlogPost);
@@ -54,14 +56,14 @@ public class BlogPostService {
         return blogPostRepository.findById(blogPostId).orElseThrow(()-> new NotFoundException(blogPostId));
     }
 //
-    public BlogPost findByIdAndUpdate(UUID blogPostId, BlogPostPayload blogPostPayloadUpdate){
-        BlogPost found = blogPostRepository.findById(blogPostId).orElseThrow(()-> new NotFoundException(blogPostId));
-        found.setCover(blogPostPayloadUpdate.getCover());
-        found.setCategoria(blogPostPayloadUpdate.getCategoria());
-
-        return blogPostRepository.save(found);
-
-    }
+//    public BlogPost findByIdAndUpdate(UUID blogPostId, BlogPostDTO blogPostPayloadUpdate){
+//        BlogPost found = blogPostRepository.findById(blogPostId).orElseThrow(()-> new NotFoundException(blogPostId));
+//        found.setCover(blogPostPayloadUpdate.);
+//        found.setCategoria(blogPostPayloadUpdate.getCategoria());
+//
+//        return blogPostRepository.save(found);
+//
+//    }
 //
     public void findByIdAndDelete(UUID blogPostId){
        BlogPost found = blogPostRepository.findById(blogPostId).orElseThrow(()-> new NotFoundException(blogPostId));

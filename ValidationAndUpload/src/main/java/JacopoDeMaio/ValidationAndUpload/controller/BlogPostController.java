@@ -3,11 +3,15 @@ package JacopoDeMaio.ValidationAndUpload.controller;
 
 
 import JacopoDeMaio.ValidationAndUpload.entities.BlogPost;
-import JacopoDeMaio.ValidationAndUpload.entities.BlogPostPayload;
+import JacopoDeMaio.ValidationAndUpload.exceptions.BadRequestException;
+import JacopoDeMaio.ValidationAndUpload.payloads.BlogPostDTO;
+import JacopoDeMaio.ValidationAndUpload.payloads.NewBlogPostResponseDTO;
 import JacopoDeMaio.ValidationAndUpload.services.BlogPostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
@@ -34,14 +38,18 @@ public class BlogPostController {
 ////    POST che serve per generare un singolo blogPost
     @PostMapping // <-- annotazione che viene intercettata durante una post
     @ResponseStatus(HttpStatus.CREATED) // <-- cambiamo il messaggio di status in questo caso 201
-    public BlogPost saveBlogPost(@RequestBody BlogPostPayload body){ // <-- per poter generare una post abbiamo bisogno di un body questo viene settato grazie all'apposita annotazione nel parametro
-        return this.blogPostService.saveBlogPost(body);
+    public NewBlogPostResponseDTO saveBlogPost(@RequestBody @Validated BlogPostDTO body, BindingResult validationResult){// <-- per poter generare una post abbiamo bisogno di un body questo viene settato grazie all'apposita annotazione nel parametro
+        if(validationResult.hasErrors()){
+            System.out.println(validationResult.getAllErrors());
+            throw  new BadRequestException(validationResult.getAllErrors());
+        }
+        return new NewBlogPostResponseDTO(body.autoreId());
     }
 //
-    @PutMapping("/{blogPostId}")
-    public BlogPost findBlogPostByIdAndUpdate(@PathVariable UUID blogPostId, @RequestBody BlogPostPayload body){
-        return blogPostService.findByIdAndUpdate(blogPostId,body);
-    }
+//    @PutMapping("/{blogPostId}")
+//    public BlogPost findBlogPostByIdAndUpdate(@PathVariable UUID blogPostId, @RequestBody BlogPostDTO body){
+//        return blogPostService.findByIdAndUpdate(blogPostId,body);
+//    }
 //
     @DeleteMapping("/{blogPostId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
