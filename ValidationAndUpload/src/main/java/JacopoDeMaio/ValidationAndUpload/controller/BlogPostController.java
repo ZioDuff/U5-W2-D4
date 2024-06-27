@@ -43,7 +43,7 @@ public class BlogPostController {
             System.out.println(validationResult.getAllErrors());
             throw  new BadRequestException(validationResult.getAllErrors());
         }
-        return new NewBlogPostResponseDTO(body.autoreId());
+        return new NewBlogPostResponseDTO(this.blogPostService.saveBlogPost(body).getId());
     }
 //
 //    @PutMapping("/{blogPostId}")
